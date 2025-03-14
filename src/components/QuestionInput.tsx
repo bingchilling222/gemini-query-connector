@@ -37,7 +37,7 @@ const QuestionInput = ({ onSubmit, isLoading }: QuestionInputProps) => {
           value={question}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask me anything..."
+          placeholder="Užduok klausimą..."
           className="pr-14 min-h-[100px] text-base resize-none bg-white border border-border focus:ring-1 focus:ring-primary/20 transition-all duration-200"
           disabled={isLoading}
         />
@@ -49,9 +49,6 @@ const QuestionInput = ({ onSubmit, isLoading }: QuestionInputProps) => {
         >
           <Send size={18} className="text-primary-foreground" />
         </Button>
-      </div>
-      <div className="text-xs text-muted-foreground text-right">
-        Press Enter to submit, Shift+Enter for new line
       </div>
     </div>
   );

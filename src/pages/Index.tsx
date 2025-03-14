@@ -32,7 +32,7 @@ const Index = () => {
     <div className="min-h-screen bg-secondary/30 flex flex-col items-center">
       <header className="w-full bg-white border-b border-border p-6 mb-8">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-2xl font-medium text-center">Gemini Pro Interface</h1>
+          <h1 className="text-2xl font-medium text-center">Virtualus asistentas parduotuvių paieškai</h1>
         </div>
       </header>
       
@@ -51,12 +51,6 @@ const Index = () => {
           </div>
         </div>
       </main>
-      
-      <footer className="w-full py-4 border-t border-border bg-white mt-auto">
-        <div className="max-w-3xl mx-auto px-4 text-center text-xs text-muted-foreground">
-          Powered by Google Gemini Pro
-        </div>
-      </footer>
     </div>
   );
 };

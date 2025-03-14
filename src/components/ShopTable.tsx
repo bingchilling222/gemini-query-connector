@@ -6,20 +6,17 @@ const ShopTable = () => {
   return (
     <Card className="w-full border border-border overflow-hidden">
       <div className="p-4 bg-secondary/50 border-b border-border">
-        <h3 className="text-sm font-medium">Shop Data Context</h3>
-        <p className="text-xs text-muted-foreground">
-          This data is automatically included as context in your queries
-        </p>
+        <h3 className="text-sm font-medium">Parduotuvių kontekstas</h3>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-border bg-secondary/30">
               <th className="py-3 px-4 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                Shop
+                Parduotuvė
               </th>
               <th className="py-3 px-4 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                Shop Description
+                Detalus aprašymas
               </th>
             </tr>
           </thead>

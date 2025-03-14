@@ -1,20 +1,13 @@
 
+import { shopData } from "@/data/shopData";
 import { GeminiRequest, GeminiResponse, ShopData } from "@/types/gemini";
-
-export const shopData: ShopData[] = [
-  { name: "Maxima", description: "Lithuanian retail chain offering groceries and household goods." },
-  { name: "Iki", description: "Popular supermarket chain with fresh products and wide selection." },
-  { name: "Rimi", description: "Supermarket chain focused on quality and sustainable products." },
-  { name: "Norfa", description: "Discount supermarket with affordable prices for everyday shopping." },
-  { name: "Lidl", description: "International discount grocery store with weekly special offers." },
-];
 
 export async function generateGeminiResponse(question: string): Promise<string> {
   try {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     
     if (!apiKey) {
-      throw new Error("Missing Gemini API key. Please add it to your .env.local file.");
+      throw new Error("Nėra API rakto, įdėkite į .env failą.");
     }
     
     // Prepare context from shop data
@@ -26,7 +19,7 @@ export async function generateGeminiResponse(question: string): Promise<string> 
     const fullPrompt = `Context (reference only, do not mention this in your answer):\n${contextText}\n\nQuestion: ${question}`;
     
     // Updated API endpoint to use the correct version and model
-    const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${apiKey}`;
+    const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
     
     const payload: GeminiRequest = {
       contents: [
@@ -50,18 +43,18 @@ export async function generateGeminiResponse(question: string): Promise<string> 
     
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(`API error: ${errorData.error?.message || response.statusText}`);
+      throw new Error(`API klaida: ${errorData.error?.message || response.statusText}`);
     }
     
     const data: GeminiResponse = await response.json();
     
     if (!data.candidates || data.candidates.length === 0) {
-      throw new Error("No response generated");
+      throw new Error("Atsakymas nesugeneruotas");
     }
     
     return data.candidates[0].content.parts[0].text;
   } catch (error) {
-    console.error("Error generating response:", error);
+    console.error("Klaida generuojant atsakymą: ", error);
     throw error;
   }
 }
