@@ -1,6 +1,5 @@
-
 import { Card } from "@/components/ui/card";
-import { shopData } from "@/lib/gemini";
+import { shopData } from "@/data/shopData";
 
 const ShopTable = () => {
   return (

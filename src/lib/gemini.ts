@@ -58,3 +58,5 @@ export async function generateGeminiResponse(question: string): Promise<string> 
     throw error;
   }
 }
+export { shopData };
+
