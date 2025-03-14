@@ -25,6 +25,9 @@ export async function generateGeminiResponse(question: string): Promise<string> 
     // Add context to question
     const fullPrompt = `Context (reference only, do not mention this in your answer):\n${contextText}\n\nQuestion: ${question}`;
     
+    // Updated API endpoint to use the correct version and model
+    const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro:generateContent?key=${apiKey}`;
+    
     const payload: GeminiRequest = {
       contents: [
         {
@@ -37,16 +40,13 @@ export async function generateGeminiResponse(question: string): Promise<string> 
       ]
     };
     
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }
-    );
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
     
     if (!response.ok) {
       const errorData = await response.json();
